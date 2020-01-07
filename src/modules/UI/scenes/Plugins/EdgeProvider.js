@@ -89,6 +89,7 @@ export class EdgeProvider extends Bridgeable {
   // for the user to pick a wallet within their list of wallets that match `currencyCodes`
   // Returns the currencyCode chosen by the user (store: Store)
   async chooseCurrencyWallet (cCodes: Array<string> = []): Promise<string> {
+    console.log(`ENTER edgeProvider.chooseCurrencyWallet ${cCodes.toString()}`)
     const currencyCodes = []
     const currencyCodeCount = {}
     let i = 0
@@ -209,14 +210,17 @@ export class EdgeProvider extends Bridgeable {
 
   // Get an address from the user's wallet
   getReceiveAddress (options: EdgeGetReceiveAddressOptions): EdgeReceiveAddress {
+    console.log(`ENTER edgeProvider.getReceiveAddress ${options.toString()}`)
     const wallet: GuiWallet = UI_SELECTORS.getSelectedWallet(this._state)
     if (options && options.metadata) {
       wallet.receiveAddress.metadata = options.metadata
     }
+    console.log(`EXIT edgeProvider.getReceiveAddress ${wallet.receiveAddress.toString()}`)
     return Promise.resolve(wallet.receiveAddress)
   }
 
   getCurrentWalletInfo (): Promise<WalletDetails> {
+    console.log(`ENTER edgeProvider.getCurrentWalletInfo`)
     const wallet: GuiWallet = UI_SELECTORS.getSelectedWallet(this._state)
     const currentCode = UI_SELECTORS.getSelectedCurrencyCode(this._state)
     let walletName = wallet.name
@@ -232,6 +236,7 @@ export class EdgeProvider extends Bridgeable {
       currencyIcon: wallet.symbolImage,
       currencyIconDark: wallet.symbolImageDarkMono
     }
+    console.log(`EXIT edgeProvider.getCurrentWalletInfo ${returnObject.toString()}`)
     return Promise.resolve(returnObject)
   }
 
@@ -259,9 +264,11 @@ export class EdgeProvider extends Bridgeable {
   // Write data to user's account. This data is encrypted and persisted in their Edge
   // account and transferred between devices
   async writeData (data: { [key: string]: string }) {
+    console.log(`ENTER edgeProvider.writeData ${data.toString()}`)
     const account = CORE_SELECTORS.getAccount(this._state)
     const store = account.dataStore
     await Promise.all(Object.keys(data).map(key => store.setItem(this._pluginId, key, data[key])))
+    console.log(`EXIT edgeProvider.writeData ${{ success: true }.toString()}`)
     return { success: true }
   }
 
@@ -269,12 +276,14 @@ export class EdgeProvider extends Bridgeable {
   // 'keys' is an array of strings with keys to lookup.
   // Returns an object with a map of key value pairs from the keys passed in
   async readData (keys: Array<string>): Promise<Object> {
+    console.log(`ENTER edgeProvider.readData ${keys.toString()}`)
     const account = CORE_SELECTORS.getAccount(this._state)
     const store = account.dataStore
     const returnObj = {}
     for (let i = 0; i < keys.length; i++) {
       returnObj[keys[i]] = await store.getItem(this._pluginId, keys[i]).catch(e => undefined)
     }
+    console.log(`EXIT edgeProvider.readData ${returnObj.toString()}`)
     return returnObj
   }
 
@@ -284,6 +293,7 @@ export class EdgeProvider extends Bridgeable {
 
   // Request that the user spend to an address or multiple addresses
   async requestSpend (spendTargets: Array<EdgeSpendTarget>, options?: EdgeRequestSpendOptions): Promise<EdgeTransaction | void> {
+    console.log(`ENTER edgeProvider.requestSpend ${spendTargets.toString()}`)
     const guiWallet = UI_SELECTORS.getSelectedWallet(this._state)
     const coreWallet = CORE_SELECTORS.getWallet(this._state, guiWallet.id)
     const info: GuiMakeSpendInfo = {
@@ -317,11 +327,13 @@ export class EdgeProvider extends Bridgeable {
         exchangeAmount: Number(bns.abs(exchangeAmount))
       })
     }
+    console.log(`EXIT edgeProvider.requestSpend transaction`)
     return transaction
   }
 
   // Request that the user spend to a URI
   async requestSpendUri (uri: string, options?: EdgeRequestSpendOptions): Promise<EdgeTransaction | void> {
+    console.log(`ENTER edgeProvider.requestSpendUri ${uri.toString()}`)
     const guiWallet = UI_SELECTORS.getSelectedWallet(this._state)
     const coreWallet = CORE_SELECTORS.getWallet(this._state, guiWallet.id)
     const result = await coreWallet.parseUri(uri)
@@ -359,6 +371,7 @@ export class EdgeProvider extends Bridgeable {
         exchangeAmount: Number(bns.abs(exchangeAmount))
       })
     }
+    console.log(`EXIT edgeProvider.requestSpendUri transaction`)
     return transaction
   }
 
@@ -371,6 +384,7 @@ export class EdgeProvider extends Bridgeable {
   }
 
   async _makeSpendRequest (guiMakeSpendInfo: GuiMakeSpendInfo): Promise<EdgeTransaction | void> {
+    console.log(`ENTER edgeProvider._makeSpendRequest ${guiMakeSpendInfo.toString()}`)
     const edgeTransaction: EdgeTransaction | void = await this._spend(guiMakeSpendInfo)
 
     const { metadata } = guiMakeSpendInfo
@@ -379,6 +393,7 @@ export class EdgeProvider extends Bridgeable {
       const coreWallet = CORE_SELECTORS.getWallet(this._state, guiWallet.id)
       await coreWallet.saveTxMetadata(edgeTransaction.txid, edgeTransaction.currencyCode, metadata)
     }
+    console.log(`EXIT edgeProvider._makeSpendRequest edgeTransaction`)
     return edgeTransaction
   }
 
@@ -420,6 +435,7 @@ export class EdgeProvider extends Bridgeable {
   }
 
   async deprecatedAndNotSupportedDouble (request: Object, url: string, url2: string): Promise<mixed> {
+    console.log(`ENTER edgeProvider.deprecatedAndNotSupportedDouble ${request.toString()} ${url.toString()} ${url2.toString()}`)
     const response = await window.fetch(url, request)
     if (response.status !== 201) {
       const errorData = await response.json()
@@ -464,6 +480,7 @@ export class EdgeProvider extends Bridgeable {
         }
       }
     }
+    console.log(`EXIT edgeProvider.deprecatedAndNotSupportedDouble ${orderData.toString()}`)
     return orderData
   }
 
