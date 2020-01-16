@@ -55,7 +55,7 @@ export const PREFERRED_TOKENS = ['WINGS', 'HERC', 'REP', 'AGLD', 'RIF']
 // DO NOT PUT ANY TOKENS IN HERE!
 export const CURRENCY_PLUGIN_NAMES = {
   BCH: 'bitcoincash',
-  BNB: 'binance',
+  // BNB: 'binance',
   BSV: 'bitcoinsv',
   BTC: 'bitcoin',
   BTG: 'bitcoingold',
@@ -63,22 +63,22 @@ export const CURRENCY_PLUGIN_NAMES = {
   DGB: 'digibyte',
   DOGE: 'dogecoin',
   EBST: 'eboost',
-  EOS: 'eos',
-  ETH: 'ethereum',
+  // EOS: 'eos',
+  // ETH: 'ethereum',
   FTC: 'feathercoin',
   GRS: 'groestlcoin',
   LTC: 'litecoin',
   QTUM: 'qtum',
-  RBTC: 'rsk',
+  // RBTC: 'rsk',
   RVN: 'ravencoin',
   SMART: 'smartcash',
   TBTC: 'bitcointestnet',
   UFO: 'ufo',
   VTC: 'vertcoin',
-  XLM: 'stellar',
+  // XLM: 'stellar',
   XMR: 'monero',
-  XRP: 'ripple',
-  XTZ: 'tezos',
+  // XRP: 'ripple',
+  // XTZ: 'tezos',
   XZC: 'zcoin'
 }
 

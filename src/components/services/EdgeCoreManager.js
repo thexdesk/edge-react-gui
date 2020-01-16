@@ -2,7 +2,7 @@
 
 import detectBundler from 'detect-bundler'
 import { type EdgeContext, type EdgeFakeWorld, MakeEdgeContext, MakeFakeEdgeWorld } from 'edge-core-js'
-import makeAccountbasedIo from 'edge-currency-accountbased/lib/react-native-io.js'
+// import makeAccountbasedIo from 'edge-currency-accountbased/lib/react-native-io.js'
 import makeBitcoinIo from 'edge-currency-bitcoin/lib/react-native-io.js'
 import makeMoneroIo from 'edge-currency-monero/lib/react-native-io.js'
 import makeExchangeIo from 'edge-exchange-plugins/lib/react-native-io.js'
@@ -35,7 +35,7 @@ const contextOptions = {
 const isReactNative = detectBundler.isReactNative
 const nativeIo = isReactNative
   ? {
-    'edge-currency-accountbased': makeAccountbasedIo(),
+    // 'edge-currency-accountbased': makeAccountbasedIo(),
     'edge-currency-bitcoin': makeBitcoinIo(),
     'edge-currency-monero': makeMoneroIo(),
     'edge-exchange-plugins': makeExchangeIo()
