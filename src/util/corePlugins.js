@@ -27,14 +27,14 @@ if (ENV.CHANGE_NOW_INIT == null && ENV.CHANGE_NOW_API_KEY) {
 
 export const currencyPlugins = {
   // edge-currency-accountbased:
-  eos: true,
-  ethereum: ENV.ETHEREUM_INIT,
-  fio: true,
-  stellar: true,
-  ripple: true,
-  tezos: true,
-  binance: true,
-  rsk: true,
+  eos: false,
+  ethereum: false,
+  fio: false,
+  stellar: false,
+  ripple: false,
+  tezos: false,
+  binance: false,
+  rsk: false,
   // edge-currency-bitcoin:
   bitcoin: true,
   bitcoincash: true,
