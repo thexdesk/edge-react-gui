@@ -12,7 +12,7 @@ import { intl } from '../../locales/intl'
 import s from '../../locales/strings.js'
 import FormattedText from '../../modules/UI/components/FormattedText/index'
 import { PayeeIcon } from '../../modules/UI/components/PayeeIcon/PayeeIcon.ui.js'
-import styles, { styles as styleRaw } from '../../styles/scenes/TransactionDetailsStyle'
+import styles, { styles as styleRaw, iconSize } from '../../styles/scenes/TransactionDetailsStyle'
 import THEME from '../../theme/variables/airbitz'
 import type { GuiContact, GuiWallet } from '../../types/types.js'
 import { scale } from '../../util/scaling.js'
@@ -24,6 +24,8 @@ import AmountArea from '../common/TransactionDetailAmountArea.js'
 import SubCategorySelect from '../common/TransactionSubCategorySelect.js'
 import { createAdvancedTransactionDetailsModal } from '../modals/AdvancedTransactionDetailsModal.js'
 import { showError } from '../services/AirshipInstance.js'
+import { Icon } from '../../modules/UI/components/Icon/Icon.ui.js'
+import * as Constants from '../../constants/indexConstants'
 
 const EXCHANGE_TEXT = s.strings.fragment_transaction_exchange
 const EXPENSE_TEXT = s.strings.fragment_transaction_expense
@@ -531,13 +533,52 @@ export class TransactionDetails extends Component<TransactionDetailsProps, State
 
     return (
       <Fragment>
-        <SceneWrapper bodySplit={scale(24)}>
+        <SceneWrapper bodySplit={scale(24)} background="body">
           <View style={styles.container}>
-            <View style={styles.tileContainer}></View>
+            <View style={styles.tilesContainer}>
+              <View style={styles.tileContainerBig}>
+                <Icon type={Constants.ION_ICONS} name={Constants.CREATE_OUTLINE} size={16} style={styles.tileIcon}/>
+                <FormattedText style={styles.tileTextTop}>Recipent Name</FormattedText>
+                <View style={styles.tileRow}>
+                  <Icon type={Constants.ION_ICONS} name={Constants.CONTACT} size={iconSize.avatar} style={styles.tileAvatarIcon}/>
+                  <FormattedText style={styles.tileTextBottom}>Raquel Wallace</FormattedText>
+                </View>
+              </View>
+              <View style={styles.tileContainer}>
+                <FormattedText style={styles.tileTextTop}>Bitcoin Amount</FormattedText>
+                <FormattedText style={styles.tileTextBottom}>b 0.029486 (+10 fee)</FormattedText>
+              </View>
+              <View style={styles.tileContainer}>
+                <Icon type={Constants.ION_ICONS} name={Constants.CREATE_OUTLINE} size={16} style={styles.tileIcon}/>
+                <FormattedText style={styles.tileTextTop}>Amount in USD</FormattedText>
+                <FormattedText style={styles.tileTextBottom}>$300.49</FormattedText>
+              </View>
+              <View style={styles.tileContainer}>
+                <FormattedText style={styles.tileTextTop}>Amount at Current Price</FormattedText>
+                  <View style={styles.tileRow}>
+                    <FormattedText style={styles.tileTextPrice}>$290.88</FormattedText>
+                    <FormattedText style={styles.tileTextPriceChange}>- 5.6%</FormattedText>
+                  </View>
+              </View>
+              <View style={styles.tileContainerBig}>
+                <Icon type={Constants.ION_ICONS} name={Constants.CREATE_OUTLINE} size={16} style={styles.tileIcon}/>
+                <FormattedText style={styles.tileTextTop}>Category</FormattedText>
+                  <View style={styles.tileRow}>
+                    <View style={styles.category}>
+                      <FormattedText style={styles.categoryText}>Income</FormattedText>
+                    </View>
+                    <FormattedText style={styles.subCategoryText}>Salary</FormattedText>
+                  </View>
+              </View>
+              <View style={styles.tileContainerBig}>
+                <Icon type={Constants.ION_ICONS} name={Constants.CREATE_OUTLINE} size={16} style={styles.tileIcon}/>
+                <FormattedText style={styles.tileTextTop}>Notes</FormattedText>
+                <FormattedText style={styles.tileTextNotes}>These are my notes for this week’s salary. Have a good rest of the week!</FormattedText>
+              </View>
+              <FormattedText style={styles.textTransactionData}>View Advance Transaction Data</FormattedText>
+            </View>
           </View>
         </SceneWrapper>
-        {this.state.contactSearchVisibility && this.renderPayeeSearch()}
-        {this.state.subCategorySelectVisibility && this.renderCategorySearch()}
       </Fragment>
     )
   }
