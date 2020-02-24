@@ -401,6 +401,8 @@ const strings = {
   transaction_details_copy_tx_id: 'Copy Transaction ID',
   transaction_details_copy_signed_tx: 'Copy Signed Raw Hex',
   transaction_details_modal_debug_info: 'Debug Info:\n',
+  transaction_details_fiat_modal_header: '%s AMOUNT',
+  transaction_details_fiat_label: 'Choose an amount',
   string_fee_with_brackets: '(Fee)',
   title_Header: 'Header',
   back_button_text: 'Back',
@@ -604,8 +606,7 @@ const strings = {
   exchange_from_wallet: 'Exchange from %s',
   exchange_to_wallet: 'Exchange to %s',
   wallet_list_modal_header_mru: 'Most Recent Wallets',
-  wallet_list_modal_header_all: 'All Wallets',
-  choose_an_amount: 'Choose an amount'
+  wallet_list_modal_header_all: 'All Wallets'
 }
 
 // export default strings
