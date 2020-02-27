@@ -11,6 +11,14 @@ if (ENV.ETHEREUM_INIT == null && (ENV.ETHERSCAN_API_KEY || ENV.INFURA_PROJECT_ID
   }
 }
 
+// Shim old-format env.json files:
+if (ENV.RSK_INIT == null && (ENV.ETHERSCAN_API_KEY || ENV.INFURA_PROJECT_ID)) {
+  ENV.RSK_INIT = {
+    // blockcypherApiKey: '...',
+    etherscanApiKey: ENV.ETHERSCAN_API_KEY
+  }
+}
+
 if (ENV.SHAPESHIFT_INIT == null && (ENV.SHAPESHIFT_API_KEY && ENV.SHAPESHIFT_CLIENT_ID && ENV.SHAPESHIFT_SECRET)) {
   ENV.SHAPESHIFT_INIT = {
     apiKey: ENV.SHAPESHIFT_API_KEY,
@@ -34,7 +42,7 @@ export const currencyPlugins = {
   ripple: true,
   tezos: true,
   binance: true,
-  rsk: true,
+  rsk: ENV.RSK_INIT,
   // edge-currency-bitcoin:
   bitcoin: true,
   bitcoincash: true,
