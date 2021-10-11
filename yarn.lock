@@ -3188,6 +3188,11 @@ cleaners@^0.1.4:
   resolved "https://registry.yarnpkg.com/cleaners/-/cleaners-0.1.4.tgz#8eeb3474096e661641983bfc011c372d50e81013"
   integrity sha512-EfNsbvIl+zFkUkyEYPk8BMlxUulCUxG3eyVFeRvPG21xS2CNsBRqIiPv88W7/yAhhjt7RGZb/GPNU/gLmSpsVw==
 
+cleaners@^0.3.9:
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/cleaners/-/cleaners-0.3.12.tgz#0e99ef2460a59ed87550a60bdfc441b1696ff9cb"
+  integrity sha512-bK7IvvYyhfy30S3VKmWi/YVWp0MUH1pEYfdtbjCpQiIzy8gmP9GCXv6AVZENDHbpcRHqMnZONs3ieyJMh3zvVw==
+
 cli-cursor@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"
@@ -4105,12 +4110,13 @@ edge-currency-monero@^0.2.4:
     mymonero-core-js "git://github.com/EdgeApp/mymonero-core-js.git#william/v0.14.0-hardfork"
     uri-js "^3.0.2"
 
-edge-exchange-plugins@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/edge-exchange-plugins/-/edge-exchange-plugins-0.9.1.tgz#9f7126361df243277574dab6628e0a21465fa6bd"
-  integrity sha512-C7Pbog2K+8H9oWifbyEUPVNx2SP0U8mQ7ozhWgAv765zZOLztVc5pHbEpceHyEpb8Cv5F+5frExNLlTUStLfZg==
+edge-exchange-plugins@^0.11.34:
+  version "0.11.37"
+  resolved "https://registry.yarnpkg.com/edge-exchange-plugins/-/edge-exchange-plugins-0.11.37.tgz#3a766148d2df5af40b39a099b383ab0aba35867b"
+  integrity sha512-srtt1wSxCpcQ3Wix6fsZmsCookrGwJP/1u9oFv1qM0zMyNGubm8ZvJvHeUUrObu4aR4hqc4O98hmW92/adSktQ==
   dependencies:
     biggystring "^3.0.2"
+    cleaners "^0.3.9"
     esm "^3.2.4"
     hashjs "^1.2.0"
     iso4217 "^0.2.0"
