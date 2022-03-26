@@ -37,7 +37,7 @@
     "lint:fix": "npm run format",
     "localize": "node ./localizeLanguage.js; git add ./src/locales/strings",
     "precommit": "npm run localize && lint-staged && flow && npm test",
-    "prepare": "./prepare-assets.sh",
+    "prepare": "yarn run snyk-protect && ./prepare-assets.sh",
     "server": "node ./loggingServer.js",
     "start": "node --max_old_space_size=4000 node_modules/react-native/local-cli/cli.js start ",
     "test": "jest",
@@ -46,7 +46,8 @@
     "test:e2e": "detox test -c ios.sim.debug",
     "test:e2e:build": "detox build",
     "updot": "updot",
-    "watch": "npm test -- --watch"
+    "watch": "npm test -- --watch",
+    "snyk-protect": "snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -162,7 +163,8 @@
     "sprintf-js": "^1.1.1",
     "url": "^0.11.0",
     "url-parse": "^1.4.4",
-    "why-did-you-update": "^0.1.1"
+    "why-did-you-update": "^0.1.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
@@ -288,5 +290,6 @@
     "assets": [
       "./src/assets/fonts"
     ]
-  }
+  },
+  "snyk": true
 }
