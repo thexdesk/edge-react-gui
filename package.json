@@ -114,7 +114,7 @@
     "prop-types": "^15.5.10",
     "qrcode-generator": "^1.4.4",
     "react": "16.8.3",
-    "react-native": "0.59.10",
+    "react-native": "0.69.0",
     "react-native-airship": "^0.1.1",
     "react-native-animatable": "^1.1.0",
     "react-native-app-settings": "git://github.com/swansontec/react-native-app-settings#fix-rn59",
