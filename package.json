@@ -157,7 +157,7 @@
     "react-native-webview": "git://github.com/swansontec/react-native-webview#edge-version",
     "react-redux": "^5.0.5",
     "react-timer-mixin": "^0.13.4",
-    "redux": "^3.7.1",
+    "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "sprintf-js": "^1.1.1",
     "url": "^0.11.0",
